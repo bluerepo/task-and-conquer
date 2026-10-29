@@ -1,0 +1,146 @@
+# Task & Conquer configuration.
+# Edit any value and reload the app. Values that shape the map (map, settlements) apply to newly generated maps.
+# Times are in days, gold in coins.
+
+map:
+  provinces_min: 60          # the setup screen will not allow fewer provinces than this
+  provinces_max: 400
+  provinces_default: 150
+  land_share: 0.52           # share of the map that is land
+  starting_ring: 1           # your castle's province plus this many rings of neighbours
+
+settlements:
+  min_share: 0.40            # share of provinces that hold a settlement (keep at 0.30 or more)
+  mix:                       # share of settlements of each type
+    castle: 0.12
+    fort: 0.16
+    town: 0.30
+    village: 0.42
+
+# X: days a besieged settlement holds out before it is looted
+siege_days:
+  village: 1
+  town: 2
+  fort: 5
+  castle: 7
+  main_castle: 8
+
+# Provinces lost when a settlement is looted (never more than you own, never your castle's own province)
+loot_provinces:
+  village: 1
+  town: 2
+  fort: 3
+  castle: 4
+  main_castle: 4
+main_castle_loot_takes_all_gold: true
+
+# Y: gold earned per day
+gold:
+  start: 60
+  province_per_day:
+    farmland: 3
+    forest: 2
+    hills: 2
+    mountains: 1
+    marsh: 1
+    desert: 1
+    tundra: 1
+    ashlands: 1
+    wastes: 1
+  coastal_bonus_per_day: 1
+  settlement_per_day:
+    village: 2
+    town: 5
+    fort: 3
+    castle: 8
+    main_castle: 12
+  army_defeat_bounty: 15     # gold for routing an enemy army
+
+quests:
+  difficulties:
+    - name: Squire
+      skill_points: 1
+      lands: 1
+      gold: 5
+    - name: Knight
+      skill_points: 2
+      lands: 1
+      gold: 10
+    - name: Lord
+      skill_points: 3
+      lands: 1
+      gold: 20
+    - name: Legend
+      skill_points: 5
+      lands: 1
+      gold: 40
+  goal_complete_gold: 50          # bonus gold for completing a goal
+  goal_complete_skill_points: 3   # bonus points to each of the goal's skills
+
+# Raiding expedition: plant a quest in a province that does not border your realm
+raid:
+  base_cost: 30
+  cost_per_hop: 20           # per province of distance beyond your border
+  hop_exponent: 1.6          # cost grows faster the further you go
+  max_hops: 14
+
+armies:
+  goal_deadline_warning_days: 7   # a goal's campaign launches this long before its deadline
+  goal_idle_days: 7               # ...or after this many days without a finished quest in the goal
+  campaign_march_days: 7          # how long a goal campaign marches
+  mountain_delay_days: 1          # extra days per mountain, ashlands or crater wastes province on the army's road
+
+rivals:
+  start_share: 0.45          # share of provinces rivals hold at the start
+  terra_incognita_min: 0.30  # share of provinces nobody holds at the start
+  base_weight: 1             # rival size weight = base_weight + number of goals in its realm
+  new_realm_provinces: 4     # land a rival gets when you add a realm mid-game
+  new_goal_provinces: 2      # land a rival gains when you add a goal to its realm
+  steal_provinces: 3         # land taken from a neighbour when terra incognita runs out
+  name_patterns:
+    - "Kingdom of {realm}"
+    - "The {realm} Empire"
+    - "{realm} Republic"
+    - "Khanate of {realm}"
+    - "The {realm} Alliance"
+    - "Duchy of {realm}"
+    - "The {realm} Dominion"
+    - "Free Cities of {realm}"
+    - "Grand Principality of {realm}"
+    - "The {realm} Horde"
+    - "Theocracy of {realm}"
+    - "The {realm} Compact"
+  colors: ["#b3312b", "#2f5fa8", "#6e3fa0", "#1f8a6b", "#d0671f", "#4c4a55", "#c04a7a", "#3f9bbf", "#7a5a3a", "#5b7a26", "#8f2d56", "#2d6a74"]
+
+ranks:
+  wealth:                    # by gold in the treasury
+    - { at: 0, name: "Starving Tribe" }
+    - { at: 40, name: "Pocket Lint Principality" }
+    - { at: 120, name: "Balanced Treasury" }
+    - { at: 300, name: "Modest Coffers" }
+    - { at: 700, name: "Booming Economy" }
+    - { at: 1500, name: "Merchants' Delight" }
+    - { at: 3000, name: "Wealthy Nation" }
+    - { at: 6000, name: "Gilded Realm" }
+    - { at: 12000, name: "Dragon's Hoard" }
+    - { at: 25000, name: "Rich Beyond Reason" }
+    - { at: 50000, name: "Owner of All the Gold" }
+  power:                     # by provinces held
+    - { at: 1, name: "Tribe in a Muddy Field" }
+    - { at: 4, name: "Hamlet with Ambitions" }
+    - { at: 7, name: "Small State" }
+    - { at: 11, name: "Respectable Barony" }
+    - { at: 16, name: "Rising Kingdom" }
+    - { at: 22, name: "Regional Bully" }
+    - { at: 30, name: "Kingdom of Great Renown" }
+    - { at: 40, name: "Feared Realm" }
+    - { at: 55, name: "Grand Empire" }
+    - { at: 75, name: "Continental Superpower" }
+    - { at: 100, name: "Worldwide Empire" }
+
+defaults:
+  realms: [Health, Money, Business, Relationships, Education]
+  skills: [Conditioning, Muscle growth, Public speaking, Investing, Guitar, Coding, "Selling & influencing", Digital marketing, Meditation, Writing, "Art & design"]
+
+debug:
+  time_travel: true          # shows "Skip a day" in notifications, handy for testing armies
