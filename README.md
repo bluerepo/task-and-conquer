@@ -55,6 +55,7 @@ You need Node.js 18 or newer (the free LTS download from https://nodejs.org). Th
 | `maps/<map name>/world.md` | One world, as a Markdown checklist plus a state block the app manages. |
 | `character.md` | Your skills, shared by every world. |
 | `src/` | Source: `page.html` (markup, CSS), `core.js` (map), `game.js` (rules, storage), `ui.js` (interface). |
+| `warp/` | Onboarding for AI agents: `AGENTS.md` (instructions), `CONTEXT.md` (vocabulary, schema, config guide), `CLAUDE.md`. |
 
 ## Editing your quests as text
 
@@ -70,7 +71,7 @@ Rival: Duchy of Health
 - [ ] Book a sports massage | due: 2026-11-10 | difficulty: Squire
 ```
 
-New lines get an id and a place on the map. Ticked boxes count as completed, with rewards. The first paragraph of every `world.md` describes the format.
+New lines get an id and a place on the map. Ticked boxes count as completed, with rewards. `warp/CONTEXT.md` has the full format.
 
 ## Moving a world between copies
 
